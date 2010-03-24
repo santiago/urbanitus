@@ -1,0 +1,189 @@
+=corner-each(!tl, !tr, !br, !bl)
+  -moz-border-radius-topleft = !tl
+  -webkit-border-top-left-radius = !tl
+  -moz-border-radius-topright = !tr
+  -webkit-border-top-right-radius = !tr
+  -moz-border-radius-bottomleft = !bl
+  -webkit-border-bottom-left-radius = !bl
+  -moz-border-radius-bottomright = !br
+  -webkit-border-bottom-right-radius = !br
+
+=corner(!px)
+  -moz-border-radius = !px 
+  -webkit-border-radius = !px
+
+=corner-top(!px)
+  +corner-each(!px,!px,0,0)
+
+=corner-bottom(!px)
+  +corner-each(0,0,!px,!px)
+
+=corner-left(!px)
+  +corner-each(!px,0,0,!px)
+
+=corner-right(!px)
+  +corner-each(0,!px,!px,0)
+
+.corner-all-4px
+  +corner(4px)
+.corner-all-8px
+  +corner(8px)
+
+=box(!w,!h)
+  width = !w
+  height = !h  
+
+=solid-border
+  :border 1px solid #000000
+
+=dotted-border
+  :border 1px dotted #000000
+
+=overlay-from-bottom(!x,!y,!w,!h)
+  :position absolute
+  left= !x
+  bottom= !y
+  width= !w
+  height= !h
+
+=checkbox
+  .checkbox
+    :height 15px
+    :width 15px
+    :background #000
+    +corner(4px)
+    :float left
+    :margin-right 5px
+    &.checked
+      :background #000 url(/images/chulito.png) no-repeat scroll 2px 1px
+
+=photos
+  .photos-content
+    +corner(6px)
+    :border 4px solid #FFF
+    :background #FFF
+    :height 200px
+    :width 250px
+    :position relative
+    .photos
+      :position absolute
+      :background transparent
+      :width 250px
+      :height 200px
+      .left-btn,.right-btn,.fullscrn
+        :background url(/images/botones-mi-tienda-agregar-foto.png) no-repeat
+        :width 25px
+        :height 25px
+        :float left
+      .left-btn
+        :background-position -8px -7px
+      .right-btn
+        :background-position -38px -7px
+      .fullscrn
+        :background url(/images/botones-mi-tienda-publicar-producto.png) no-repeat
+        :background-position -19px -4px
+        :height 20px
+        :width 20px
+        :margin-left 175px
+      .gallery
+        :width 248px
+        /:background #000
+        :clear left
+        :height 166px
+        :position relative
+        :margin-top 32px
+        :border 1px solid #CCC
+        .del-btn
+          :position absolute
+          :top 2px
+          :right 2px
+          :background url(/images/botones-mi-tienda-agregar-foto.png) no-repeat
+          :background-position -32px -65px
+          :height 15px
+          :width 15px
+          :margin 2px 0 0 5px
+        .pic
+          :height 160px
+          .img
+            :text-align center
+    .uploader
+      :position absolute
+      :background #000
+      :width 240px
+      :height 190px
+      :padding 5px
+      .empty
+        :text-align center
+        +box(150px,100px)
+        +corner(4px)
+        :border 2px solid #555
+        :top 45px
+        :left 45px
+        :position absolute
+        p
+          :color #555
+          :margin-top 30px
+          :font-size 16px
+      .social
+        :width 100px
+        :position absolute
+        :top 8px
+        :left 110px
+        .flickr,.picassa,.link
+          :background url(/images/botones-mi-tienda-agregar-foto.png) no-repeat
+          :height 14px
+          :float left
+          :margin-left 10px
+        .flickr
+          :width 30px
+          :background-position -59px -68px
+        .picassa
+          :width 15px
+          :background-position -95px -68px
+        .link
+          :width 20px
+          :background-position -117px -68px
+      #fileQueue
+        :background #000
+        :height 150px
+      .uploadifyQueueItem
+        :font-size 9px
+        :margin-top 0
+        :padding 0
+        :padding-left 5px
+        :margin-bottom 3px
+        :width 235px
+        :background-color #000
+        :border 0
+        .cancel
+          :margin-top 5px
+        .fileName
+          :color #FFF
+        .uploadifyProgress
+          :margin-top 4px
+          :width 90%
+          +corner(3px)
+        .uploadifyProgressBar
+          :height 4px
+  .photos-control
+    .show,.new
+      :float left
+      :background #FFF url(/images/botones-mi-tienda-publicar-producto.png) no-repeat
+      :width 25px
+      :height 18px
+      :margin-left 7px
+      +corner-bottom(3px)
+    .show
+      :background-position -14px -32px
+    .new
+      :background-position -39px -32px
+=pos(!l,!t)
+  :position absolute
+  left = !l
+  top = !t
+
+=rpos(!r,!t)
+  :position absolute
+  right = !r
+  top = !t
+  
