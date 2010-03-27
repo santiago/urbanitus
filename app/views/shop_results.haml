@@ -1,0 +1,16 @@
+.items
+  - results.each do |r|
+    .shop-result-item
+      .shop-logo
+        %img{:src=>"#{r[:image_link]}",:height=>90,:width=>90}
+      .wrap
+        .shop-presence{:class=>"#{r[:presence]}"}
+          %p.shop-name #{r[:name]}
+        .shop-description
+          %p #{r[:description]}
+      - r[:showcase_products].each do |p|
+        .product-basic
+          .product-photo
+            %img{:src=>"#{p[:image_link]}",:height=>65,:width=>65}
+          .product-name
+            %p #{p[:name]}

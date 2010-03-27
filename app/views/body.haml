@@ -1,5 +1,40 @@
 %body
   #top.container_50
   #main.container_50
+    #main-left
+      .marketplace-list
+        %ul
+          %li.marketplace-item
+            %a{:href=>""} Marketplace A
+          %li.marketplace-item
+            %a{:href=>""} Marketplace B
+          %li.marketplace-item
+            %a{:href=>""} Marketplace C
+          %li.marketplace-item
+            %a{:href=>""} Marketplace D
+          %li.marketplace-item
+            %a{:href=>""} Marketplace E
+          %li.marketplace-item
+            %a{:href=>""} Marketplace F
+          %li.marketplace-item
+            %a{:href=>""} Marketplace G
+          %li.marketplace-item
+            %a{:href=>""} Marketplace H
+          %li.marketplace-item
+            %a{:href=>""} Marketplace I
+          %li.marketplace-item
+            %a{:href=>""} Marketplace J
+          %li.marketplace-item
+            %a{:href=>""} Marketplace K
+    #main-content
+      #results-nav
+        %ul
+          %li.result-nav-option
+            %a{:href=>""}
+          %li.result-nav-option
+            %a{:href=>""}
+      #results-list      
+        =haml :shop_results, :locals => {:results => shop_results}
+        = # haml :product_results
 #layouts.hidden
 
