@@ -1,0 +1,30 @@
+#sign-up-form
+  %form{:method => "POST"}
+    .email.field
+      %p email
+      %input{:type=>"text"}
+    .password.field
+      %p contrase&ntilde;a
+      %input{:type=>"text"}
+    .repassword.field
+      %p contrase&ntilde;a
+      %input{:type=>"text"}
+    .alias.field
+      %p alias
+      %input{:type=>"text"}
+    .terms.field
+      %span.checkbox &nbsp;
+      %p 
+        acepto los 
+        %a{:href=>"#terms-of-use"} t&eacute;rminos de uso
+      #terms-of-use
+        %p adsf dsfaasd sfdgfsdg gfsdfg sdfgdsg dsfg sdf sdgdsf sdgdfsg sdfgsdgsdfgsdg sdgsdgdsg sgsdfgdsg gssdgsdfg sdgdsfgdsg sdfgdsg ggdsfgdsfgdsfg g gdgsd dsfg sdgdsf
+  %button#post-sign-up enviar
+#login-form
+  %form{:method => "POST"}
+    .login.field
+      %p alias o email
+      %input{:type=>"text"}
+    .password.field
+      %p contrase&ntilde;a
+      %input{:type=>"text"}

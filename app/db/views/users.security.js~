@@ -1,0 +1,8 @@
+{
+   "by_email": {
+       "map": "function(doc) { \t    emit(doc.email, doc); \t}"
+   },
+   "by_username": {
+       "map": "function(doc) { \t    emit(doc.username, doc); \t}"
+   }
+}

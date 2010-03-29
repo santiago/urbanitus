@@ -1,0 +1,171 @@
+.ghost-dialog
+  .close-dialog
+    +rpos(12px,8px)
+
+  !top= 20px
+  !top_chulito= 31px
+  !top_offset= !top_chulito-!top
+
+  !left= 24px
+  !left_chulito= 35px
+  !left_offset= !left_chulito-!left
+
+  +box(200px,200px)
+  :left -100px
+  :top 20px
+  :background #000
+  .top-left,.top-center,.top-right,
+  .mid-left,.mid-center,.mid-right,
+  .bot-left,.bot-center,.bot-right,
+  .b-c-left,.b-c-center,.b-c-right
+    :float left
+  .top
+    .top-left,.top-right
+      +box(24px,!top)
+    .top-left
+      :background url(/images/ghost_dialog/fantasmita-esquina-superior-izquierdo-blanco.png) no-repeat 0 0
+    .top-center
+      /+box(152px,!top)
+      *
+        :float left
+      .t-c-left,.t-c-right,.t-c-center
+        :background url(/images/ghost_dialog/fantasmita-pixel-superior-blanco.png) repeat-x 0 0
+      .t-c-left
+        +box(59px,!top)
+      .t-c-right
+        +box(57px,!top)
+      .t-c-center
+        +box(36px,!top)
+    .top-right
+      :background url(/images/ghost_dialog/fantasmita-esquina-superior-derecho-blanco.png) no-repeat 0 0
+  &.top-chulito
+    .top-left,.top-right
+      +box(24px,!top_chulito)
+    .top-left
+      :background-position 0 11px
+    .top-center
+      /+box(152px,!top_chulito)
+      .t-c-left,.t-c-right
+        :background-position 0 11px
+      .t-c-left
+        +box(59px,!top_chulito)
+      .t-c-right
+        +box(57px,!top_chulito)
+      .t-c-center
+        +box(36px,!top_chulito)
+        :background url(/images/ghost_dialog/fantasmita-chulito-arriba-blanco.png) no-repeat 0 0px
+    .top-right
+      :background-position 0 11px
+  .middle
+    :clear left
+    .mid-left
+      .m-l-left,.m-l-center,.m-l-right
+        :background url(/images/ghost_dialog/fantasmita-pixel-lateral-izquierdo-blanco.png) repeat-y 0px 0
+      .m-l-left
+        +box(!left,0px)
+      .m-l-center
+        +box(!left,36px)
+      .m-l-right
+        +box(!left,122px)
+    .mid-center
+      :background #FFF
+      :width 152px
+      :height 158px      
+    .mid-right
+      .m-r-left,.m-r-center,.m-r-right
+        :background url(/images/ghost_dialog/fantasmita-pixel-lateral-derecho-blanco.png) repeat-y 0 0
+      .m-r-left
+        +box(!left,0px)
+      .m-r-center
+        +box(!left,36px)
+      .m-r-right
+        +box(!left,122px)
+  &.bottom-chulito
+    .bottom
+      .bot-center
+        .b-c-center
+          :background url(/images/ghost_dialog/fantasmita-chulito-abajo-blanco.png) no-repeat 0 0px
+          :height 31px
+  &.left-chulito
+    .top
+      :margin-left 11px
+    .top-center
+      .t-c-left
+        :width 48px
+    .mid-center
+      :width 141px
+    .mid-left
+      .m-l-left,.m-l-right
+        +box(!left_chulito,61px)
+        :background-position 11px 0px
+      .m-l-center
+        :background url(/images/ghost_dialog/fantasmita-chulito-izquierdo-blanco.png) no-repeat 0px 0
+        +box(!left_chulito,36px)
+      .m-l-right
+        +box(!left_chulito,61px)
+    .bottom
+      :margin-left 11px 
+      .bot-center
+        .b-t-center
+          :width 32px
+        .b-c-right
+          :width 39px
+  .bottom
+    :clear left
+    .bot-left
+      +box(24px,21px)
+      :background url(/images/ghost_dialog/fantasmita-esquina-inferior-izquierdo-blanco.png) no-repeat 0 0
+    .bot-center
+      .b-c-left,.b-c-right
+        :background url(/images/ghost_dialog/fantasmita-pixel-inferior-blanco.png) repeat-x 0 0
+      .b-c-left
+        +box(59px,21px)
+      .b-c-right
+        +box(50px,21px)
+      .b-c-center
+        +box(43px,21px)
+        :background url(/images/ghost_dialog/fantasmita-pixel-inferior-blanco.png) repeat-x 0 0
+    .bot-right
+      +box(24px,21px)
+      :background url(/images/ghost_dialog/fantasmita-esquina-inferior-derecho-blanco.png) no-repeat 0 0
+
+  / negro
+  &.negro
+    :background none
+    .top-left
+      :background-image url(/images/ghost_dialog/fantasmita-esquina-superior-izquierdo-negro.png)
+    .top-center
+      .t-c-left,.t-c-right,.t-c-center
+        :background-image url(/images/ghost_dialog/fantasmita-pixel-superior-negro.png)
+      .t-c-center
+
+    .top-right
+      :background-image url(/images/ghost_dialog/fantasmita-esquina-superior-derecho-negro.png)
+
+    .mid-left
+      .m-l-left,.m-l-center,.m-l-right
+        :background url(/images/ghost_dialog/fantasmita-pixel-lateral-izquierdo-negro.png)
+    .mid-right
+      :background url(/images/ghost_dialog/fantasmita-pixel-lateral-derecho-negro.png)
+      .m-l-center
+        :background url(/images/ghost_dialog/fantasmita-chulito-izquierdo-negro.png)
+
+    .bot-left
+      +box(24px,21px)
+      :background url(/images/ghost_dialog/fantasmita-esquina-inferior-izquierdo-negro.png)
+    .bot-center
+      .b-c-left,.b-c-right
+        :background url(/images/ghost_dialog/fantasmita-pixel-inferior-negro.png)
+      .b-c-center
+        +box(43px,21px)
+        :background url(/images/ghost_dialog/fantasmita-pixel-inferior-negro.png)
+    .bot-right
+      +box(24px,21px)
+      :background url(/images/ghost_dialog/fantasmita-esquina-inferior-derecho-negro.png)
+    &.top-chulito
+      .t-c-center
+        :background url(/images/ghost_dialog/fantasmita-chulito-arriba-negro.png) no-repeat 0 -2px
+    &.bottom-chulito
+      .b-c-center
+        :background url(/images/ghost_dialog/fantasmita-chulito-abajo-negro.png) no-repeat 0 0px
+        :height 31px
