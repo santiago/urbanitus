@@ -1,5 +1,16 @@
 %body
   #top.container_50
+    #logo
+      %p urbanit.us
+    #search
+      .search-wrap
+        %p.label buscar
+        %input{:type=>"text",:width=>200}
+        %p.search-by santa tentacion
+    #account
+      =haml :signin
+      #get-shop
+        %p crea tu tienda
   #main.container_50
     #main-left
       .marketplace-list
@@ -37,4 +48,5 @@
         =haml :shop_results, :locals => {:results => shop_results}
         = # haml :product_results
 #layouts.hidden
-
+  =haml :ghost_dialog
+  =haml :signin_forms

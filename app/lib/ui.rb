@@ -41,23 +41,37 @@ module UI
   end
 
   module Components
+    def signin
+      assets= jquery_ui_with_styles
+      assets.js_tag << "ui.checkbox"
+      assets.js_tag << "ui.ghost_dialog"
+      assets.js_tag << "ui.sign_in"
+      [assets, {:layouts => [:ghost_dialog,:signin_forms]}]
+    end
+
+    def ghost_dialog
+      assets= jquery_ui_with_styles
+      assets.js_tag << "ui.ghost_dialog"
+      assets
+    end
+
     def ui_components
       assets= Assets.new
-      assets.lib = ["jquery"]
-      assets.css_link = ["/javascripts/thirdparty/jquery/ui/cupertino/ui.all.css",
-                         "/javascripts/thirdparty/jquery/jgrowl/jquery.jgrowl.css",
-                         "home"]
-      assets.js_tag = ["thirdparty/strophe/strophe.min",
-                       "thirdparty/strophe/basic",
-                       "home"]
-      assets.jquery_plugin= ["ui/ui.core", "ui/ui.draggable", "ui/ui.resizable", "ui/ui.dialog", "jgrowl/jquery.jgrowl_minimized", "meerkat/meerkat-1.0"]
-      assets
-
       components=[]
       UI::Components.instance_methods.each do |c|
         components << c
       end
       [assets, {:components=> components}]
+    end
+
+    private
+    def jquery_ui_with_styles
+      assets= Assets.new 
+      assets.css_link= ["styles"]
+      assets.lib= ["jquery"]
+      assets.jquery_plugin= ["ui/ui.core"]
+      assets.js_tag= []
+      assets
     end
   end
 
@@ -67,11 +81,12 @@ module UI
     # render the component as a standalone web page 
     # => 
     def design(tpl)
-      @session={}
       assets,locals = send(tpl)
-      @head = haml_head tpl, assets
-      @component = haml tpl.to_sym, :locals =>locals
-      haml :standalone
+      head = haml_head tpl, assets
+      layouts= locals.delete(:layouts)
+      component = haml tpl.to_sym, :locals =>locals
+      haml :standalone, :locals => {:head=>head, 
+        :component => component, :layouts=> layouts}
     end
     
     # => 

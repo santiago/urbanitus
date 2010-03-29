@@ -1,4 +1,10 @@
 @import utils
+@import checkbox
+@import ghost_dialog
+
+@import front
+@import signin
+
 
 *
   :margin 0
@@ -36,10 +42,23 @@ a
     :border 0
 
 
-.standalone-container
-  :width 536px
-
 .hidden, .layout
   :display none
 
-@import front
+#sign-in
+  .ghost-dialog
+    &.login
+      :left -88px
+      :top 23px
+    &.sign-up
+      :left -106px
+      :top 23px
+  .field
+    :margin-bottom 10px
+    :height 23px
+#sign-up-form,#login-form
+  p
+    :font-size 12px
+    :width 70px
+  input
+    :width 170px

@@ -33,11 +33,11 @@ module CouchDBHelpers
 
   def query_view(db,design,view,params)
     r=RestClient.get couchdb_view_url(db,design,view,params)
-    data=JSON.parse r
+    data=JSON.parse r.body
     if data["rows"].empty?
-      "no data"
+      []
     else
-      data
+      data["rows"]
     end
   end
 

@@ -16,23 +16,16 @@ module Security
   end
 
   def login(username,password)
-    login_couchdb(username,password)
+    if session["user"]==nil
+      login_couchdb(username,password)
+    else
+      "already logged in"
+    end
   end
 
   def login_couchdb(username,password)
-    r= query_view(:users,:crud,:by_email,{"key"=>"\"#{username}\""})
-    user= nil    
-    user_data= r["rows"][0]["value"]
-    if user_data["email"]==username && user_data["password"]==password
-      user= {
-        "id"=> user_data["_id"],
-        "name"=> user_data["name"],
-        "lastname"=> user_data["last_name"],
-        "email"=> user_data["email"],
-        "password"=> user_data["password"]
-      }
-    end
-    user
+    r=query_view(:users,:security,:login,{"key"=>"[\"#{username}\",\"#{password}\"]"})
+    r.empty? ? r : r[0]["value"]
   end
 
   def signup(username,password,captcha)
