@@ -13,6 +13,7 @@ $.widget("ui.field", {
 });
 $.extend($.ui.field, {getter:"is_valid"});
 
+
 $.widget("ui.sign_up_form", {
   _init: function() {
     var $el= this.element;
