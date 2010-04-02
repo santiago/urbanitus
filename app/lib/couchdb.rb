@@ -11,12 +11,13 @@ module CouchDBHelpers
   end
 
   def post_database(db, data)
-    RestClient.post "#{COUCHDB_SERVER}/#{db}", data.to_json
+    #(RestClient.post "#{COUCHDB_SERVER}/#{db}", data.to_json).body
+    "oe"
   end
 
   def post_doc(db, data)
     if defined? options
-      RestClient.post couchdb_db_url(db), data
+      (RestClient.post couchdb_db_url(db), data).body
     else
       post_database(db,data)
     end

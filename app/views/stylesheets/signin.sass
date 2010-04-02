@@ -20,6 +20,14 @@
   :border-right 1px solid #AAA
 
 #sign-up-form
+  .field
+    :position relative
+  .error
+    :width 245px 
+    :color red
+    :font-size 10px
+    :text-align right
+    :display none
   .terms.field
     p,.checkbox
       :float left
@@ -28,3 +36,12 @@
     a
       :text-decoration underline
       :color blue
+  .check
+    +rpos(-10px,3px)
+    +box(15px,15px)
+    &.fail
+      :background url(/images/error.png) no-repeat scroll -1px -2px
+    &.ok
+      :background url(/images/checkbox/chulito.png) no-repeat scroll 0 0
+#post-sign-up
+  :margin-left 200px

@@ -7,15 +7,10 @@
 $.widget("ui.checkbox", {
   _init: function() {
       var $el= this.element;
-      this.state= $el.hasClass("checked");
+      var self= this;
       $el.click(function() {
 	  $(this).toggleClass("checked");
+	  $(this).trigger("change", $el.hasClass("checked"));
 	});
-    },
-    get: function() {
-      return this.state;
-    },
-    set: function(state) {
-      this.state= state;
     }
   });

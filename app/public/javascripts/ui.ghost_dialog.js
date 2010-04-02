@@ -106,6 +106,7 @@ $.widget("ui.ghost_dialog", {
       $el.find(this.dialog).fadeIn();
       $el.find(this.dialog).width((width)+"px");
       this.move_chulito(this.options.pos);
+      this.height(this.options.height);
       this.content(this.options.content);
       this.options.after_render($el.find(this.dialog));
     }

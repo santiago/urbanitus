@@ -39,6 +39,8 @@ get '/stylesheets/:name.css' do
 end
 
 get '/' do
+  session[:captcha]="c4pTcH4"
+
   showcase_products= []
   3.times do |t|
     showcase_products << {:image_link=>"/images/gatito.png", :name=> "Producto de rub-ris #{t}"}

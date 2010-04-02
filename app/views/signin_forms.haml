@@ -1,25 +1,39 @@
 #sign-up-form
-  %form{:method => "POST"}
+  %form{:method=>"post", :action=>"/signup" }
     .email.field
       %p email
-      %input{:type=>"text"}
+      %input{:type=>"text", :name=>"email"}
+      %span.check
+      %p.error error message goes here
     .password.field
       %p contrase&ntilde;a
-      %input{:type=>"text"}
+      %input{:type=>"text", :name=>"password"}
+      %span.check
+      %p.error error message goes here
     .repassword.field
       %p contrase&ntilde;a
-      %input{:type=>"text"}
-    .alias.field
+      %input{:type=>"text", :name=>"repassword", :disabled=>true}
+      %span.check
+      %p.error error message goes here
+    .username.field
       %p alias
-      %input{:type=>"text"}
+      %input{:type=>"text", :name=>"username"}
+      %span.check
+      %p.error error message goes here
+    .captcha.field
+      %p captcha
+      %input{:type=>"text", :name=>"captcha", :value=>"c4pTcH4"}
+      %span.check
+      %p.error error message goes here
     .terms.field
+      %input{:type=>"hidden", :name=>"terms"}
       %span.checkbox &nbsp;
       %p 
         acepto los 
         %a{:href=>"#terms-of-use"} t&eacute;rminos de uso
       #terms-of-use
         %p adsf dsfaasd sfdgfsdg gfsdfg sdfgdsg dsfg sdf sdgdsf sdgdfsg sdfgsdgsdfgsdg sdgsdgdsg sgsdfgdsg gssdgsdfg sdgdsfgdsg sdfgdsg ggdsfgdsfgdsfg g gdgsd dsfg sdgdsf
-  %button#post-sign-up enviar
+  %button#post-sign-up{:disabled=>true} enviar
 #login-form
   %form{:method => "POST"}
     .login.field
