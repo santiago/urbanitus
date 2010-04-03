@@ -19,7 +19,7 @@ module Security
     if session["user"]==nil
       login_couchdb(username,password)
     else
-      "already logged in"
+      {"user"=>"already logged in"}
     end
   end
 
@@ -41,7 +41,9 @@ module Security
     r.empty? ? {:exists=>false} : {:exists=>true}
   end
 
-
+  # [] means failed login: user not found
+  #
+  # {:} means successful login
   def login_couchdb(username,password)
     r=query_view(:users,:security,:login,{"key"=>"[\"#{username}\",\"#{password}\"]"})
     r.empty? ? r : r[0]["value"]

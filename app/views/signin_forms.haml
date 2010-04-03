@@ -28,17 +28,18 @@
     .terms.field
       %input{:type=>"hidden", :name=>"terms"}
       %span.checkbox &nbsp;
-      %p 
+      %p
         acepto los 
         %a{:href=>"#terms-of-use"} t&eacute;rminos de uso
       #terms-of-use
         %p adsf dsfaasd sfdgfsdg gfsdfg sdfgdsg dsfg sdf sdgdsf sdgdfsg sdfgsdgsdfgsdg sdgsdgdsg sgsdfgdsg gssdgsdfg sdgdsfgdsg sdfgdsg ggdsfgdsfgdsfg g gdgsd dsfg sdgdsf
   %button#post-sign-up{:disabled=>true} enviar
 #login-form
-  %form{:method => "POST"}
+  %form{:method => "POST",:action=>"/login"}
     .login.field
       %p alias o email
-      %input{:type=>"text"}
+      %input{:type=>"text", :name=>"username"}
     .password.field
       %p contrase&ntilde;a
-      %input{:type=>"text"}
+      %input{:type=>"text", :name=>"password"}
+  %button#post-login entrar!

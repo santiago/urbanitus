@@ -8,7 +8,10 @@
         %input{:type=>"text",:width=>200}
         %p.search-by santa tentacion
     #account
-      =haml :signin
+      - if session["user"].nil?
+        =haml :signin
+      - else
+        =haml :me
       #get-shop
         %p crea tu tienda
   #main.container_50

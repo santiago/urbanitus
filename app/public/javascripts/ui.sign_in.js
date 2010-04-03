@@ -239,11 +239,46 @@ $.widget("ui.sign_in", {
 				class: "login",
 				pos:140
 				});
+		    // click to login
+		    $("#post-login").click(function() {
+			    $("#login-form form").ajaxSubmit({
+				    success: function(data) {
+					var login= $.evalJSON(data);
+					if (login.error) {
+					    $("#login-form")
+						.prepend(
+							 $("<p/>")
+							 .addClass("error")
+							 .text(login.error)
+							 );
+					    return true;
+					}
+					if (login==[]) {
+					    $("#login-form")
+						.prepend(
+							 $("<p/>")
+							 .addClass("error")
+							 .html("alias, email o contrase&ntilde;a incorrectos")
+							 );
+					    return true;
+					}
+					if (login.username) {
+					    $("#sign-in")
+						.replaceWith(
+							     $("<div/>")
+							     .attr("id","me")
+							     .html(login.username)
+							     );
+					}
+					return false;
+				    }
+				});
+			});
 		    e.stopPropagation();
 		});
 	    $("#sign-up").click(function(e) {
 		    $("#terms-of-use").hide();
-		    $(window).click();
+		    //$(window).click();
 		    $(this).ghost_dialog({
 			    width:300,
 				height:250,

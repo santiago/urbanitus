@@ -40,6 +40,7 @@ end
 
 get '/' do
   session[:captcha]="c4pTcH4"
+#  session["user"]= nil
 
   showcase_products= []
   3.times do |t|

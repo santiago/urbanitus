@@ -1,9 +1,11 @@
 @import utils
 @import checkbox
 @import ghost_dialog
+@import signin
+@import me
 
 @import front
-@import signin
+
 
 
 *
@@ -44,21 +46,3 @@ a
 
 .hidden, .layout
   :display none
-
-#sign-in
-  .ghost-dialog
-    &.login
-      :left -88px
-      :top 23px
-    &.sign-up
-      :left -106px
-      :top 23px
-  .field
-    :margin-bottom 10px
-    :height 23px
-#sign-up-form,#login-form
-  p
-    :font-size 12px
-    :width 70px
-  input
-    :width 170px

@@ -6,7 +6,7 @@ end
 # POST login
 post '/login' do
   user=login(params[:username],params[:password])
-  if user
+  unless user.empty?
     session["user"]=user
   end
   user.to_json
