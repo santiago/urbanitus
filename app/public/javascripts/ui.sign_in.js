@@ -253,22 +253,17 @@ $.widget("ui.sign_in", {
 							 );
 					    return true;
 					}
-					if (login==[]) {
-					    $("#login-form")
-						.prepend(
-							 $("<p/>")
-							 .addClass("error")
-							 .html("alias, email o contrase&ntilde;a incorrectos")
-							 );
+					if (login=="") {
+					    $("#login-form").find(".error")
+						.html("alias, email o contrase&ntilde;a incorrectos")
+						.show();
 					    return true;
 					}
 					if (login.username) {
-					    $("#sign-in")
-						.replaceWith(
-							     $("<div/>")
-							     .attr("id","me")
-							     .html(login.username)
-							     );
+					    $.get("/"+login.username+"/me", function(html) {
+						    $("#sign-in")
+							.replaceWith(html);
+						});
 					}
 					return false;
 				    }

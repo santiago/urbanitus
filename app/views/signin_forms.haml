@@ -35,7 +35,8 @@
         %p adsf dsfaasd sfdgfsdg gfsdfg sdfgdsg dsfg sdf sdgdsf sdgdfsg sdfgsdgsdfgsdg sdgsdgdsg sgsdfgdsg gssdgsdfg sdgdsfgdsg sdfgdsg ggdsfgdsfgdsfg g gdgsd dsfg sdgdsf
   %button#post-sign-up{:disabled=>true} enviar
 #login-form
-  %form{:method => "POST",:action=>"/login"}
+  %p.error &nbsp;
+  %form{:method=>"POST",:action=>"/login"}
     .login.field
       %p alias o email
       %input{:type=>"text", :name=>"username"}

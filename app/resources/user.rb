@@ -15,6 +15,7 @@ end
 # GET logout
 get '/logout' do
   session["user"]=nil
+  redirect "/"
 end
 
 # POST signup
@@ -35,4 +36,14 @@ end
 # GET signup:username_check
 get '/signup/username_check' do
   username_check(params[:username]).to_json
+end
+
+#
+# user-specific
+#
+
+# top component to control
+# and access to user's stuff
+get "/:user/me" do
+  haml :me if session["user"]==params[:user]
 end
