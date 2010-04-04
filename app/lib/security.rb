@@ -71,7 +71,8 @@ module Security
     # to couchdb, capture exception
     if r["ok"]
       # trigger side-events for signup
-      session["user"]["id"]= r["id"]
+      session["user"]={}
+      session["user"]["id"]= r["_id"]
       session["user"]["username"]= user["username"]
       session["user"]["email"]= user["email"]
       r["ok"]

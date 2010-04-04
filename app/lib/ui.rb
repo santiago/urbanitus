@@ -46,7 +46,8 @@ module UI
       assets.js_tag << "ui.checkbox"
       assets.js_tag << "ui.ghost_dialog"
       assets.js_tag << "ui.sign_in"
-      [assets, {:layouts => [:ghost_dialog,:signin_forms]}]
+      [assets, {:selector=> "#sign-in",
+                :layouts => [:ghost_dialog,:signin_forms]}]
     end
 
     def ghost_dialog
@@ -86,7 +87,8 @@ module UI
       layouts= locals.delete(:layouts)
       component = haml tpl.to_sym, :locals =>locals
       haml :standalone, :locals => {:head=>head, 
-        :component => component, :layouts=> layouts}
+        :component => component, :layouts=> layouts,
+        :selector=> locals.delete(:selector)}
     end
     
     # => 

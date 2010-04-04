@@ -6,3 +6,4 @@
     #layouts.hidden
       - layouts.each do |l|
         =haml l
+    =haml "design.js".to_sym, :locals=>{:selector=>selector}

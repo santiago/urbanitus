@@ -260,10 +260,7 @@ $.widget("ui.sign_in", {
 					    return true;
 					}
 					if (login.username) {
-					    $.get("/"+login.username+"/me", function(html) {
-						    $("#sign-in")
-							.replaceWith(html);
-						});
+					    $(window).trigger("logged_in", [login]);
 					}
 					return false;
 				    }
@@ -292,8 +289,27 @@ $.widget("ui.sign_in", {
 	    $(window).click(function() {
 		    $("#login,#sign-up").ghost_dialog("close");
 		});
+	    $("#get-shop").click(function() {
+		    $(window).trigger("shop_open");
+		});
 	}
     });
-jQuery(document).ready(function($) {
-	$("#sign-in").sign_in();
-    });
+
+/*
+    $(window).click(function(e) {
+	    var $div= $("<div/>");
+	    for (k in e) {
+		var $p= $("<p/>");
+		$p.html(k+":"+e);
+		$div.append($p)
+		    .css({position:"absolute"
+				,top:0
+				,left:0
+				,border: "1px solid #000"
+				,width: 200
+				,height: 200});
+	    }
+	    $("#main").append($div);
+	});
+
+*/

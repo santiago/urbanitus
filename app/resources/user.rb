@@ -45,5 +45,5 @@ end
 # top component to control
 # and access to user's stuff
 get "/:user/me" do
-  haml :me if session["user"]==params[:user]
+  haml :me if session["user"]["username"]==params[:user]
 end
