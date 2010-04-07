@@ -8,9 +8,10 @@ $.widget("ui.account",{
 
 	    var my_shop_open= function() {
 		$("#shop-open").click(function() {
-			$(this).unbind().hide();
+			// if user is logged in
 			if ($("#me").length==1) {
 			    $(window).trigger("my-shop-open");
+			    $(this).unbind().hide();
 			} else {
 			}
 		    });
