@@ -12,34 +12,10 @@
         =haml :signin
       - else
         =haml :me
-      #get-shop
-        %p crea tu tienda
+      #shop-open
+        %a{:href=>"#"} crea tu tienda
   #main.container_50
-    #main-left
-      .marketplace-list
-        %ul
-          %li.marketplace-item
-            %a{:href=>""} Marketplace A
-          %li.marketplace-item
-            %a{:href=>""} Marketplace B
-          %li.marketplace-item
-            %a{:href=>""} Marketplace C
-          %li.marketplace-item
-            %a{:href=>""} Marketplace D
-          %li.marketplace-item
-            %a{:href=>""} Marketplace E
-          %li.marketplace-item
-            %a{:href=>""} Marketplace F
-          %li.marketplace-item
-            %a{:href=>""} Marketplace G
-          %li.marketplace-item
-            %a{:href=>""} Marketplace H
-          %li.marketplace-item
-            %a{:href=>""} Marketplace I
-          %li.marketplace-item
-            %a{:href=>""} Marketplace J
-          %li.marketplace-item
-            %a{:href=>""} Marketplace K
+    =haml :global_nav
     #main-content
       #results-nav
         %ul

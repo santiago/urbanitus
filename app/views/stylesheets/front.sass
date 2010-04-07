@@ -45,14 +45,17 @@
   :width 686px
   :padding 5px
 
-.marketplace-list
+#my-shop-menu,.marketplace-list
+  +list
+
+#my-shop-menu
   :padding 5px
-  .marketplace-item
-    :display block
-    :padding 10px
-    :margin-bottom 10px
-    :text-align center
-    :border 1px dotted #000
+
+#marketplace-browser
+  :padding 5px
+  #marketplace-title
+    +item
+  
 
 .shop-result-item
   :border 1px dotted #000

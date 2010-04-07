@@ -12,5 +12,10 @@ $.widget("ui.account",{
 				.replaceWith(html);
 			});
 		});
+
+	    $("#shop-open").click(function() {
+		    $(this).unbind().hide();
+		    $(window).trigger("shop-open");
+		});
 	}
     });

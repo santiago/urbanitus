@@ -71,3 +71,4 @@ get '/:user/shop' do
 end
 
 load 'resources/user.rb'
+load 'resources/shop.rb'
