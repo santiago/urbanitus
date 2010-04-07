@@ -63,12 +63,5 @@ encontraras todo lo que necesitas para cualquier cosa y algo mas",
   haml :home
 end
 
-get '/:user/shop' do
-  if session[:user][:object].has_shop
-    session[:user]
-    return haml :shop, :locals => {:shop => shop}
-  end
-end
-
 load 'resources/user.rb'
 load 'resources/shop.rb'

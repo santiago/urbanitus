@@ -1,0 +1,16 @@
+#my-shop-new
+  .wrap
+    .logo-browse 
+      %p logo de tu tienda
+    #my-shop-new-form
+      %form{:method=>"POST", :action=>"/#{session["user"]["username"]}/shop"}
+        %input.name{:name=>"name", :value=>"Nombre de tu tienda"}
+        %input.website{:name=>"website", :value=>"sitio web"}
+        %input.location{:name=>"location", :value=>"ciudad"}
+        %textarea.description{:name=>"description"} Descripci&oacute;n
+        %input.cedula{:name=>"cedula", :value=>"n&uacute;mero de c&eacute;dula"}
+        %button#my-shop-open-post Abrir mi tienda
+  .privacy-terms
+    %h3.header T&eacute;rminos de Privacidad
+    %p fsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad
+    

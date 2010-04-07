@@ -22,5 +22,12 @@ $.widget("ui.account",{
 		    $("#shop-open").show();
 		    my_shop_open();
 		});
+	},
+	username: function() {
+	    return $("#me .username").text();
 	}
+    });
+
+$.extend($.ui.account, {
+	getter: "username"
     });
