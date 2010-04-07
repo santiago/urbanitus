@@ -15,7 +15,7 @@ $.widget("ui.account",{
 
 	    $("#shop-open").click(function() {
 		    $(this).unbind().hide();
-		    $(window).trigger("shop-open");
+		    $(window).trigger("my-shop-open");
 		});
 	}
     });

@@ -21,11 +21,13 @@ $.widget("ui.marketplace_browser", {
 
 $.widget("ui.global_nav", {
 	_init: function() {
-	    $("#my-shop-nav").hide();
-	    $("#marketplace-browser").marketplace_browser();
+	    $("#marketplace-browser").marketplace_browser()
+		.bind("marketplace_browser_expand", function() {
+			$("#my-shop-nav").remove();
+		    });
 
 	    // when shop-open 
-	    $(window).bind("shop-open", function() {
+	    $(window).bind("my-shop-open", function() {
 		    $("#marketplace-browser")
 			.marketplace_browser("collapse");
 		    // load my-shop-nav
