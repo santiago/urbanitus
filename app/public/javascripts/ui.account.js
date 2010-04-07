@@ -6,16 +6,20 @@ $.widget("ui.account",{
 
 	    $(this.ui.signin).sign_in();
 
-	    $(window).bind("logged_in", function(e,login) {
-		    $.get("/"+login.username+"/me", function(html) {
-			    $("#sign-in")
-				.replaceWith(html);
-			});
-		});
+	    var my_shop_open= function() {
+		$("#shop-open").click(function() {
+			$(this).unbind().hide();
+			if ($("#me").length==1) {
+			    $(window).trigger("my-shop-open");
+			} else {
+			}
+		    });
+	    };
+	    my_shop_open();
 
-	    $("#shop-open").click(function() {
-		    $(this).unbind().hide();
-		    $(window).trigger("my-shop-open");
+	    $(window).bind("my-shop-leave", function() {
+		    $("#shop-open").show();
+		    my_shop_open();
 		});
 	}
     });

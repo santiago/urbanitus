@@ -260,7 +260,10 @@ $.widget("ui.sign_in", {
 					    return true;
 					}
 					if (login.username) {
-					    $(window).trigger("logged_in", [login]);
+					    $.get("/"+login.username+"/me", function(html) {
+						    $("#sign-in")
+							.replaceWith(html);
+						});
 					}
 					return false;
 				    }

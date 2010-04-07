@@ -24,6 +24,7 @@ $.widget("ui.global_nav", {
 	    $("#marketplace-browser").marketplace_browser()
 		.bind("marketplace_browser_expand", function() {
 			$("#my-shop-nav").remove();
+			$(window).trigger("my-shop-leave");
 		    });
 
 	    // when shop-open 
