@@ -40,28 +40,10 @@ end
 
 get '/' do
   session[:captcha]="c4pTcH4"
-#  session["user"]= nil
-
-  showcase_products= []
-  3.times do |t|
-    showcase_products << {:image_link=>"/images/gatito.png", :name=> "Producto de rub-ris #{t}"}
-  end
-
-  shop_results= []
-  5.times do |t|
-    shop_results << {
-      :image_link => "/images/gatito.png",
-      :presence => "online",
-      :name => "La Tienda de rub-ris #{t}",
-      :description => "La tienda de rub-ris es reconocida por su 
-tradicion milenaria como la mejor tienda de los Universos. En esta tienda
-encontraras todo lo que necesitas para cualquier cosa y algo mas",
-      :showcase_products => showcase_products
-    }
-  end
-  @body= haml :body, :locals => {:shop_results => shop_results}
+  @body= haml :body
   haml :home
 end
 
 load 'resources/user.rb'
 load 'resources/shop.rb'
+load 'resources/marketplace.rb'

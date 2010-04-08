@@ -17,15 +17,7 @@
   #main.container_50
     =haml :global_nav
     #main-content
-      #results-nav
-        %ul
-          %li.result-nav-option
-            %a{:href=>""}
-          %li.result-nav-option
-            %a{:href=>""}
-      #results-list      
-        =haml :shop_results, :locals => {:results => shop_results}
-        = # haml :product_results
+      =embed :marketplace_results
 #layouts.hidden
   =haml :ghost_dialog
   =haml :signin_forms
