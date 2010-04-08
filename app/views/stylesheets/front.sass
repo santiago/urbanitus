@@ -84,13 +84,13 @@
   .wrap,.privacy-terms
     :display block
   .wrap
-    :height 200px
+    :height 300px
     :width 100%
   .privacy-terms
-    +box(200px,310px)
+    +box(300px,210px)
     :padding 5px
     :border 1px dotted #000
-    :margin-left 425px
+    :margin-left 360px
     p
       :font-size 12px
 
@@ -98,6 +98,9 @@
     :float left
   .logo-browse
     +box(80px,80px)
+    :text-align center
+    p
+      :padding 5px
     :border 1px solid #AAA
   #my-shop-new-form
     :width 580px
@@ -124,5 +127,19 @@
       :display block
     .cedula
       :display block
+    .terms-of-use
+      :height 100px
+      :overflow auto
+      :border 1px solid #AAA
+      :padding 10px
+      p
+        :font-size 12px
+    .terms-accept
+      :padding 5px
+      .checkbox
+        :float left
+      p
+        :font-size 12px
+        :margin-left 20px
     button
       :margin-left 445px

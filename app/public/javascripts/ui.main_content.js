@@ -4,7 +4,9 @@ $.widget("ui.main_content", {
 	    // when: my-shop-open
 	    $(window).bind("my-shop-open", function() {
 		    var user= $("#account").account("username");
-		    $el.load("/"+user+"/shop");
+		    $el.load("/"+user+"/shop", function(html) {
+			    $("#my-shop-new").my_shop();
+			});
 		});
 	    // when: marketplace-visit
 	    $(window).bind("marketplace-visit", function() {
