@@ -1,0 +1,10 @@
+#marketplace-results
+  #results-nav
+    %ul
+      %li.result-nav-option
+        %a{:href=>""}
+      %li.result-nav-option
+        %a{:href=>""}
+  #results-list      
+    =haml :shop_results, :locals => {:results => shop_results}
+    = # haml :product_results
