@@ -10,6 +10,7 @@ require 'lib/couchdb'
 require 'lib/security'
 require 'lib/assets_helpers'
 require 'lib/ui'
+require 'lib/image'
 require 'lib/helper'
 
 enable :sessions

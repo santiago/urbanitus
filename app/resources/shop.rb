@@ -22,6 +22,26 @@ post "/:user/shop" do
   end
 end
 
+# update logo image
+post '/:user/shop/logo' do
+  datafile = params[:Filedata]
+  userdir = File.join("public","images","shops",params[:user])#, params[:folder].gsub(/\//,""))
+  FileUtils.mkdir_p(userdir)
+  filename = File.join(userdir, datafile[:filename])
+  
+  #  "#{datafile[:tempfile].inspect}\n"
+  File.open(filename, 'wb') do |file|
+    file.write(datafile[:tempfile].read)
+  end
+  
+  # create logo thumb
+  if thumb_me(datafile[:filename], userdir, 80)
+#    return {:my_shop=>{:logo=>userdir.gsub(/^\/public/,"")}}.to_json
+  end
+
+  {:error=>"failed saving logo image"}
+  "wrote to #{filename}\n"
+end
 
 # left navigation for "my shop"
 get "/:user/shop/ui/nav" do

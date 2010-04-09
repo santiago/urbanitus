@@ -1,7 +1,10 @@
 #my-shop-new
   .wrap
     .logo-browse 
-      %p logo de tu tienda
+      .logo 
+        %p logo de tu tienda
+      %input#shop-logo-uploadify{:type=>"file",:name=>"shop-logo-uploadify"}
+      #fileQueue &nbsp;
     #my-shop-new-form
       %form{:method=>"POST", :action=>"/#{session["user"]["username"]}/shop"}
         %input.name{:name=>"name", :value=>"Nombre de tu tienda"}
@@ -13,9 +16,9 @@
           %h3.header T&eacute;rminos de Uso
           %p fsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad
         .terms-accept
-          %input{:type=>"hidden", :name=>"terms"}
+          %input.terms-checkbox{:type=>"hidden", :name=>"terms"}
           %span.checkbox &nbsp;
-          %p acepto los terminos de uso
+          %p acepto los t&eacute;rminos de uso
       %button#my-shop-new-post Abrir mi tienda
   .privacy-terms
     %h3.header T&eacute;rminos de Privacidad

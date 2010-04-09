@@ -1,6 +1,6 @@
 /** 
- * @returns:
- * @author:
+ * @description:
+ * @author: Santiago Gaviria
  * @version:
  * @requires:
  */
