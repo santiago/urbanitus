@@ -5,7 +5,7 @@ $.widget("ui.main_content", {
 	    $(window).bind("my-shop-open", function() {
 		    var user= $("#account").account("username");
 		    $el.load("/"+user+"/shop", function(html) {
-			    $("#my-shop-new").my_shop({user:user});
+			    $("#my-shop").my_shop({user:user});
 			});
 		});
 	    // when: marketplace-visit

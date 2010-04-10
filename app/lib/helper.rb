@@ -6,6 +6,7 @@ helpers do
   include CouchDBHelpers
   include Security
   include Image_Manipulation
+  include Marketplace
 
   def haml_times(tpl, n)
     html=""

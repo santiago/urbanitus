@@ -1,15 +1,47 @@
-#my-shop-new
+- has_shop= session["user"]["has_shop"]
+- logo= shop["logo"]
+- name= shop["name"]||"Nombre de tu tienda"
+- website= shop["website"]||"sitio web de tu tienda o negocio"
+- description= shop["description"]||"Descripci&oacute;n"
+- has_catalog= false
+
+#my-shop{:class=>"#{"shop-new" unless has_shop}"}
   .wrap
-    .logo-browse
+    .logo-browse 
+      - if logo
+        %img{:src=>"#{logo}"}
+      - else
+        .logo 
+          %p logo de tu tienda
+      %input#shop-logo-uploadify{:type=>"file",:name=>"shop-logo-uploadify"}
+      #fileQueue &nbsp;
     #my-shop-new-form
       %form{:method=>"POST", :action=>"/#{session["user"]["username"]}/shop"}
-        %input.name{:name=>"name", :value=>"Nombre de tu tienda"}
-        %input.website{:name=>"website", :value=>"sitio web"}
+        %input.logo_image{:type=>"hidden", :name=>"logo", :value=>"#{logo}"}
+        %input.name{:name=>"name", :value=>"#{name}"}
+        %input.website{:name=>"website", :value=>"#{website}"}
         %input.location{:name=>"location", :value=>"ciudad"}
-        %textarea.description{:name=>"description", :value=>"Descripci&oacute;n"}
+        %textarea.description{:name=>"description"} #{description}
         %input.cedula{:name=>"cedula", :value=>"n&uacute;mero de c&eacute;dula"}
-        %button#my-shop-open-post Abrir mi tienda
-  .privacy-terms
-    %h2.header T&eacute;rminos de Privacidad
-    %p fsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsad
-    
+
+        - unless has_shop
+          .terms-of-use
+            %h3.header T&eacute;rminos de Uso
+            %p fsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad
+          .terms-accept
+            %input.terms-checkbox{:type=>"hidden", :name=>"terms", :value=>false}
+            %span.checkbox &nbsp;
+            %p acepto los t&eacute;rminos de uso
+
+      - unless has_shop
+        %button#my-shop-new-post Abrir mi tienda
+
+  - unless has_catalog
+    #no-catalog
+      %p Tu cat&aacute;logo est&aacute; vac&iacute;o.
+      %a{:href=>"#"} Agrega tu primer producto
+
+  - unless has_shop
+    .privacy-terms
+      %h3.header T&eacute;rminos de Privacidad
+      %p fsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad fasadfasdf sadfasfsa dfasdfsadf safasdfsadf sadfsadfsadfsadf safasdfsadfsadfsad 

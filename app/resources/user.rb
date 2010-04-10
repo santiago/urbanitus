@@ -8,6 +8,9 @@ post '/login' do
   user=login(params[:username],params[:password])
   unless user.empty?
     session["user"]=user
+
+    shop= shop_get_by_owner(params[:username])
+    session["user"]["has_shop"]= shop unless shop.empty?
   end
   user.to_json
 end

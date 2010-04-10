@@ -6,12 +6,19 @@
  */
 $.widget("ui.my_shop", {
 	_init: function() {
-	    var id= this.element.attr("id");
+	    var self= this;
+
+	    // attributes
 	    this.user= this.options.user;
 	    this.shop_name= "";
+	    this.shop_description= "";
+	    this.shop_website= "";
+	    this.shop_logo= "";
 
-	    if (id=="my-shop-new") this._open();
-	    if (id=="my-shop") this._visit();
+	    if (this.element.hasClass("shop-new")) 
+		this._open();
+	    else
+		this._visit();
 	},
 	_open: function() {
 	    var $el= this.element;
@@ -26,6 +33,8 @@ $.widget("ui.my_shop", {
 		}
 	    };
 
+	    this._prepare_form();
+
 	    // terms of use checkbox
 	    $("#my-shop-new-form .checkbox").checkbox()
 		.bind("change", function(e,val) {
@@ -33,19 +42,24 @@ $.widget("ui.my_shop", {
 			accept_terms= val;
 		    });
 
-	    // highlight fields on click
-	    $("#my-shop-new-form").find("input,textarea")
-		.click(function() {
-			$(this).select();
-		    });
-
-	    // if name changes ...
-	    $("#my-shop-new-form input[name='name']").change(function() {
-		    self.shop_name= $.trim($(this).val());
-		    if (self.shop_name=="") {
-			$(this).val("Nombre de tu tienda");
+	    // post!
+	    $("#my-shop-new-post").click(function() {
+		    if (is_valid()) {
+			$("#my-shop-new-form form").ajaxSubmit(function(html) {
+				$el.html($(html).html());
+				$el.removeClass("shop-new");
+				self._visit();
+			    });
 		    }
 		});
+	},
+        _visit: function() {
+	    $(window).trigger("shop-visit");
+	    this._prepare_form();
+	},
+        _logo_uploadify: function() {
+	    var $el= this.element;
+	    var self= this;
 
 	    var onSelect= function(event, queueID, fileObj) {
 		return false;
@@ -57,12 +71,13 @@ $.widget("ui.my_shop", {
 		    });
 		var img= $("<img/>").attr("src",r).addClass("logo");
 		$el.find(".logo").replaceWith(img);
+		$("#my-shop-new-form input[name='logo']").val(r);
 	    };
 
 	    $el.find("#shop-logo-uploadify").uploadify({
 		    'uploader': '/javascripts/thirdparty/jquery/uploadify/uploadify.swf',
-		    'script': '/'+this.user+'/shop/logo',
-		    'folder': '/images/shops/'+this.user,
+		    'script': '/'+self.user+'/shop/logo',
+		    'folder': '/images/shops/'+self.user,
 		    'buttonImg': '/images/boton-browse.png',
 		    'auto':true,
 		    'width':70,
@@ -73,18 +88,40 @@ $.widget("ui.my_shop", {
 		    'sizeLimit':10000000,
 		    'onSelect': onSelect,
 		    'onComplete': onComplete
-	    });
-
-
-
-	    // post!
-	    $("#my-shop-new-post").click(function() {
-		    if (is_valid()) {
-			$("#my-shop-new-form form").ajaxSubmit();
+			});
+	},
+	_prepare_form: function() {
+	    var self= this;
+	    this._logo_uploadify();
+	    
+	    // highlight fields on click
+	    $("#my-shop-new-form").find("input,textarea")
+		.focus(function() {
+			$(this).select();
+		    });
+	    
+	    // if name changes ...
+	    $("#my-shop-new-form input[name='name']").change(function() {
+		    self.shop_name= $.trim($(this).val());
+		    if (self.shop_name=="") {
+			$(this).val("Nombre de tu tienda");
 		    }
 		});
-	},
-        _visit: function() {
-	    $(window).trigger("shop-visit");
+
+	    // if description changes ...
+	    $("#my-shop-new-form textarea[name='description']").change(function() {
+		    self.shop_description= $.trim($(this).val());
+		    if (self.shop_description=="") {
+			$(this).val("Descripcion");
+		    }
+		});
+
+	    // if website changes ...
+	    $("#my-shop-new-form input[name='website']").change(function() {
+		    self.shop_website= $.trim($(this).val());
+		    if (self.shop_website=="") {
+			$(this).val("sitio web de tu tienda o negocio");
+		    }
+		});
 	}
     });

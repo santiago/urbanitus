@@ -7,18 +7,36 @@ end
 # if user has not a shop, show my-shop-create
 # else show my-shop
 get "/:user/shop" do
+  #session["user"]["has_shop"]=nil
   if params[:user]==session["user"]["username"]
-    if session["user"]["my-shop"]
+    if session["user"]["has_shop"]
+      shop= shop_get_by_owner(params[:user])
+      haml :my_shop, :locals => {:shop => shop}
     else
-      haml :my_shop_new
+      haml :my_shop, :locals => {:shop => {}}
     end
+  end
+end
+
+get "/:user/shop.json" do
+  if params[:user]==session["user"]["username"]
+    shop_get_by_owner(params[:user]).to_json
   end
 end
 
 # create / open shop for :user
 post "/:user/shop" do
   if params[:user]==session["user"]["username"]
-    shop_new(params)
+    params.merge! ({:has_shop => session["user"]["has_shop"],
+                    :owner => session["user"]["username"]})
+    post= shop_new(params)
+    unless post[:error]
+      session["user"]["has_shop"]= post["id"]
+      shop= shop_get_by_owner(params[:user])
+      haml :my_shop, :locals => {:shop => shop}
+    else
+      post.to_json
+    end
   end
 end
 
