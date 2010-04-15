@@ -1,53 +1,47 @@
-(function($) {
-  var $category_select = $.category_select = function( settings ){
-    //    $('body').tab_slider( settings );
-  };
-  
-  $category_select.defaults = {//the defaults are public and can be overriden.
-  };
-  
-  $.fn.category_select = function ( settings ) {
-    settings = $.extend( {}, $category_select.defaults, settings );
-    return this.each(function() {
-	var self=this;
-	var breadcrumb=["Inicio"];
-	var render_breadcrumb= function() {
-	  var $ul=$("<ul></ul>");
-	  for (var i=0; i<breadcrumb.length; i++) {
-	    if (breadcrumb.length > 1 && i != 0)
-	      $ul.append($("<li>&raquo;</li>").addClass("right-arrow"));
-	    $ul.append($("<li></li>").html("<a>"+jQuery.trim(breadcrumb[i])+"</a>"));
-	  }
-	  return $ul;
-	};
+/** 
+ * @returns:
+ * @author:
+ * @version:
+ * @requires:
+ */
+$.widget("ui.category_select", {
+	_init: function() {
+	    var $el=this.element;
+	    var breadcrumb=["Inicio"];
+	    var id_path=[];
+	    var render_breadcrumb= function() {
+		var $ul=$("<ul></ul>");
+		for (var i=0; i<breadcrumb.length; i++) {
+		    if (breadcrumb.length > 1 && i != 0)
+			$ul.append($("<li>&raquo;</li>").addClass("right-arrow"));
+		    $ul.append($("<li></li>").html("<a>"+jQuery.trim(breadcrumb[i])+"</a>"));
+		}
+		return $ul;
+	    };
+	    
+	    var callback=function(e) {
+		$click= $(this);
+		$el.find(".category-item a.selected").removeClass("selected");
+		$click.addClass("selected");
+		var url=$(this).find("a").attr("href");
+		var $category_list=$el.find(".items");
 
-	var callback=function(e) {
-	  $click= $(this);
-	  $(self).find(".category-item a.selected").removeClass("selected");
-	  $click.addClass("selected");
-	  var id=$(this).find("a").attr("href");
-	  var $category_list=$(self).find(".items");
-	  if ($click.hasClass("leaf")) {
-	    // Trigger an event to have the clients of this component
-	    // to know that a category was selected and decide what to do 
-	    // with it
-	    var event=jQuery.Event("category_selected");
-	    $click.trigger(event,[$click.find("a").text()]);
-	  } else {
-	    $category_list.load(id+"/children .category-item", function(text) {
-		$(self).find(".category-item").bind("click", callback);
-		breadcrumb.push($click.find("a").html());
-		$(self).find(".breadcrumb").html(render_breadcrumb());
-	      });
-	  }
-	  e.preventDefault();
-	};
-	
-	$(self).find(".category-item").bind("click", callback);
-      });
-  }
- })(jQuery);
-
-function category_select(selector, options) {
-  $(selector).category_select(options);
-}
+		var name= $click.find("a").text();
+		var id= $click.find("a").attr("href").replace(/\/categories\//,"");
+		id_path.push(id);
+		if ($click.hasClass("leaf")) {
+		    var event=jQuery.Event("category_selected");
+		    $el.trigger(event,[id,name,id_path]);
+		} else {
+		    $category_list.load(url+"/children .category-item", function(text) {
+			    $el.find(".category-item").bind("click", callback);
+			    breadcrumb.push($click.find("a").html());
+			    $el.find(".breadcrumb").html(render_breadcrumb());
+			});
+		}
+		e.preventDefault();
+	    };
+	    
+	    $el.find(".category-item").click(callback);
+	} // _init
+});

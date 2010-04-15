@@ -30,11 +30,14 @@ module Marketplace
       result.delete "_rev" unless r.empty?
       result
     end
+
+    def has_catalog?
+    end
   end
 
   module Category
-    def category_find_by_name(id_path)
-      r=query_view(:shops,:getter,:by_id_path,{"key"=>"#{id_path}"})
+    def category_find_by_id_path(id_path)
+      r=query_view(:categories,:getter,:by_id_path,{"key"=>"#{id_path}"})
       result= r.empty? ? nil : r[0]["value"]
       result.delete "_id" unless r.empty?
       result.delete "_rev" unless r.empty?
@@ -42,7 +45,7 @@ module Marketplace
     end
 
     def category_exists?(id_path)
-      !category_find_by_name(id_path).nil?
+      !category_find_by_id_path(id_path).nil?
     end
   end
 
@@ -52,12 +55,12 @@ module Marketplace
       # validations
       # =>
       # has valid category
-      return {:error=>"wrong category"} unless category_exists?(product["category_path"])
+      return {:error=>"wrong category"} unless category_exists?(product["category"])
       # price is a number
       # has valid condition
       # has an image
-      return {:error=>"no image given for product"} if !product["image_link"] || product["image_link"].empty? || product["image_link"]==""
-
+      #return {:error=>"no image given for product"} if !product["image_link"] || product["image_link"].empty? || product["image_link"]==""
+      product["category"]= JSON.parse product["category"]
       r=JSON.parse post_db(:products, product.to_json)
     end
   end

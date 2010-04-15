@@ -5,6 +5,7 @@ post "/:user/shop/products" do
   if session['user']['username']==params[:user]
     item= params['product']
     item= {
+      'owner'=> session['user']['username'],
       'title'=> params[:name],
       'description' => params[:description],
       'item_type' => "products",
@@ -12,8 +13,7 @@ post "/:user/shop/products" do
       'price' => params[:price],
       'condition' => params[:condition],
       'category' => params[:category],
-      'image_link' => params[:image_link]||"",
-      'category_path'=> ""
+      'image_link' => params[:image_link]||""
     }
     product_new(item)
   end
