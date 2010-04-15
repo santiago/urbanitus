@@ -9,8 +9,8 @@ post '/login' do
   unless user.empty?
     session["user"]=user
 
-    shop= shop_get_by_owner(params[:username])
-    session["user"]["has_shop"]= shop unless shop.empty?
+    shop= shop_find_by_owner(params[:username])
+    session["user"]["has_shop"]= has_shop?(params[:username])
   end
   user.to_json
 end

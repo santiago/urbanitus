@@ -48,4 +48,6 @@ end
 
 load 'resources/user.rb'
 load 'resources/shop.rb'
+load 'resources/product.rb'
+load 'resources/category.rb'
 load 'resources/marketplace.rb'

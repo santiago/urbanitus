@@ -1,0 +1,260 @@
+#product-form
+  .post-item
+    :position absolute
+    :z-index 1000
+    :background url(/images/pixel-mi-tienda-agregar-producto.png)
+    :width 550px
+    :height 440px
+    .post-item-btn
+      :background url(/images/botones-mi-tienda-agregar-foto.png) no-repeat
+      :background-position -227px 0px
+      :width 42px
+      :height 30px
+      :position absolute
+      :left 490px
+      :bottom -30px
+      :z-index 1000
+      &.on
+        :background-position -83px 0px
+    .post-item-content
+      :height 450px
+      :position absolute
+      :padding 10px
+      :padding-left 20px
+      :z-index 0
+      .photos-container
+        :float left
+        +photos
+      .field
+        :background #000
+        :margin 5px 0
+        +corner(8px)
+        &.name, &.description
+          p
+            :color #FFF
+            :font-size 18px
+            :margin-left 10px
+            :margin-top 5px
+            :position absolute
+      .right-container
+        :float left
+        :width 255px
+        :height 224px
+        .price,.condition,.category,.google
+          &.field
+            :height 20px
+            :width 200px
+            :margin 0px 0 5px 17px
+            :position relative
+            p
+              :color #FFF
+              :font-size 12px
+              :padding-top 4px
+              &.label,&.oeip-label,&.dropbox-content,&.oeip-content
+                :letter-spacing 0em
+                :font-size 14px
+                :margin-left 10px
+          .error
+            :position absolute
+            :top 1px
+            :left 170px
+            :height 15px
+        .category,.condition
+          .dropper
+            :height 20px
+            :width 20px
+            :background url(/images/botones-mi-tienda-publicar-producto.png) no-repeat
+            :background-position -64px -30px
+            :position absolute
+            :right 2px
+        .category
+          &.field
+            :position relative
+          .error
+          .category-btn
+          .category-list
+            :position absolute
+            :top 20px
+            :left 0px
+            :z-index 10000
+            :background #FFF
+            :border 2px solid #000
+            +corner(8px)
+            .category-list-top-shadow
+              /:background url(/images/sombra-blanca-arriba-fantasmita-categorias.png) no-repeat
+              /:height 6px
+            .category-list-bottom-shadow
+              /:background url(/images/sombra-blanca-abajo-fantasmita-categorias.png) no-repeat
+              /:height 9px
+            .category-list-content
+              :width 220px
+              :height 450px
+              /:background url(/images/pixel-fantasmita-categorias.png) repeat-y
+              .label
+                :display block
+                :font-size 16px
+                :letter-spacing 0.1em
+                :border-bottom 1px solid #000
+                :text-align center
+                :padding 5px 15px
+                :margin 0px 15px
+              .breadcrumb
+                :padding 5px 5px
+                :margin 0 15px 5px
+                :border-bottom 1px solid #000
+                :float left
+                :display block
+                a
+                  :text-decoration none
+                  :color #999
+                  :font-size 12px
+                  &.last
+                    :color #000
+                    :font-weight 900
+                li
+                  &.right-arrow
+                    :font-weight 900
+                    :margin 0px 2px
+              .items
+                :clear left
+                li
+                  :display block
+                  /:margin 0 9px
+                  :padding 3px 0 2px 10px
+                  :position relative
+                  :font-size 12px
+                  .right-arrow
+                    :position absolute
+                    :right 10px
+                    :bottom 5px
+                    :font-weight 900
+                  &.odd
+                    :background-color #FFF9F0
+                  a
+                    :text-decoration none
+                    :color #999
+                    :letter-spacing 0.1em
+                    :padding 3px
+        .condition.dropbox.field
+          .dropbox-list
+            :position absolute
+            :z-index 2000
+            +corner(8px)
+            :background #DDD
+            :border 2px solid #000
+            :padding 5px
+            :margin-top 1px
+            .dropbox-item
+              :letter-spacing 0.1em
+              :padding-left 5px
+              :padding-top 2px
+              :padding 0
+              :height 20px
+              :background #FFF
+              /:border 3px solid #000
+              /:border-top 1px solid #000
+              /:border-right 1px solid #000
+              /:border-left 5px solid #000
+              :border 1px solid #000
+              :border-width 1px 2px 4px 6px
+              :width 175px
+              +corner(8px)
+              :color #000
+          &.error
+            :margin-top 17px
+        .price.field
+          .oeip-label
+            :float left
+            :color green
+            :margin-right 5px
+          #price-edit
+            :position absolute
+            :top 0px
+            :left 25px
+            :background #666
+            :height 18px
+            :width 168px
+            :border 1px solid #DDD
+            :color #FFF
+            :font-size 14px
+            +corner-right(8px)
+            :padding-left 5px
+        .google.field
+          :background none
+          :margin-top 10px
+          +checkbox
+          p
+            :font-size 14px
+      .bottom-container
+        :float left
+        :width 491px
+        :height 155px
+        :padding 10px
+        .name,.description
+          &.field
+            :width 453px
+            :position relative
+          &.error
+            :position absolute
+            :right 40px
+          .oeip-content
+            :font-size 14px
+            :letter-spacing 0em
+            :margin-top 2px
+          #name-edit,#description-edit
+            :width 446px
+            :position absolute
+        .name.field
+          :height 20px
+          :font-family "Lucida Grande",Arial,Helvetica,Verdana,sans-serif
+          #name-edit
+            :background #666
+            :height 18px
+            :padding-left 5px
+            :border 1px solid #DDD
+            :color #FFF
+            :font-size 14px
+            +corner(8px)
+        .description
+          &.field
+            :height 120px
+            #description-edit
+              :background #666
+              :height 112px
+              :border 1px solid #DDD
+              :color #FFF
+              +corner(8px)
+              :padding 6px 0 0 5px
+      .publish-btn,.twitter,.facebook
+        :background url(/images/botones-mi-tienda-publicar-producto.png)
+        :float left
+      .publish-btn
+        :height 25px
+        :width 100px
+        :background-position -8px -54px
+        +corner(4px)
+        :margin-left 320px
+        p
+          :color #FFF
+          :margin-top 2px
+          :text-align center
+          :font-size 16px
+      .twitter,.facebook
+        :margin-right 3px
+        :margin-top 3px
+      .twitter
+        +box(20px,20px)
+        :background-position -107px -7px
+      .facebook
+        +box(20px,20px)
+        :background-position -110px -57px
+    label.error
+      /:background url(/images/boton-cerrar-rojo.png) no-repeat scroll 0 0
+      :color red !important
+      :font-size 18px !important
+      :font-weight 900
+      :padding 3px 0 3px 20px !important
+      :margin-left 20px
+      :position absolute
+      :top 0
+      :left 430px

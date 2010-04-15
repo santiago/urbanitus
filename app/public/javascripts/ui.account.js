@@ -1,3 +1,9 @@
+/** 
+ * @returns:
+ * @author:
+ * @version:
+ * @requires:
+ */
 $.widget("ui.account",{
 	_init: function() {
 	    this.ui= {

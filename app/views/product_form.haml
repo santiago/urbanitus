@@ -1,0 +1,38 @@
+#product-form
+  .post-item
+    .post-item-content
+      .photos-container
+        =haml :photos, :locals=>{:uploader => true}
+      %form#post-item-form{:name=>'post-item-form', :action=>"/#{session["user"]["username"]}/shop/products", :method=>'post'}
+        %input{:type=>"hidden",:name=>"image_link"}
+        .right-container
+          .category.field
+            .dropper
+            .category-btn
+              %p.label categor&iacute;a
+            .category-list
+              .category-list-top-shadow
+              .category-list-content
+                / %p.label categorias
+                .breadcrumb
+                  %ul
+                    %li
+                      %a Inicio
+                =embed :category_list
+              .category-list-bottom-shadow
+          
+          .condition.field
+            .dropper &nbsp;
+          .price.field
+          .google.field
+            .checkbox.checked
+            %p publicar en Google
+        .bottom-container
+          .name.field
+          .description.field
+          .facebook
+            &nbsp;
+          .twitter
+            &nbsp;
+          .publish-btn
+            &nbsp;

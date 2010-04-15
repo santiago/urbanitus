@@ -1,0 +1,8 @@
+.items
+  %ul
+    - category_list.each do |c|
+      %li.category-item{:class=>"#{c["leaf"] ? "leaf" : ""}"}
+        %a{:href=>"/categories/#{c["id"]}"} 
+          =c["key"]
+        - unless c["leaf"]
+          %span.right-arrow &raquo;

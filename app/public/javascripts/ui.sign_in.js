@@ -1,3 +1,9 @@
+/** 
+ * @returns:
+ * @author:
+ * @version:
+ * @requires:
+ */
 $.widget("ui.field", {
     _init: function() {
         this._valid= false;
@@ -13,7 +19,12 @@ $.widget("ui.field", {
 });
 $.extend($.ui.field, {getter:"is_valid"});
 
-
+/** 
+ * @returns:
+ * @author:
+ * @version:
+ * @requires:
+ */
 $.widget("ui.sign_up_form", {
   _init: function() {
     var $el= this.element;
@@ -225,19 +236,26 @@ $.widget("ui.sign_up_form", {
   }
 
 });
+
+/** 
+ * @returns:
+ * @author:
+ * @version:
+ * @requires:
+ */
 $.widget("ui.sign_in", {
 	_init: function() {
 	    $("#login").click(function(e) {
 		    $(window).click();
 		    $(this).ghost_dialog({
 			    width:300,
-				height:100,
-				chulito: "top",
-				layout: "#layouts .ghost-dialog",
-				content: $("#layouts #login-form").clone(),
-				color: "negro",
-				class: "login",
-				pos:140
+			    height:100,
+			    chulito: "top",
+			    layout: "#layouts .ghost-dialog",
+			    content: $("#layouts #login-form").clone(),
+			    color: "negro",
+			    class: "login",
+			    pos:140
 				});
 		    // click to login
 		    $("#post-login").click(function() {
@@ -297,22 +315,3 @@ $.widget("ui.sign_in", {
 		});
 	}
     });
-
-/*
-    $(window).click(function(e) {
-	    var $div= $("<div/>");
-	    for (k in e) {
-		var $p= $("<p/>");
-		$p.html(k+":"+e);
-		$div.append($p)
-		    .css({position:"absolute"
-				,top:0
-				,left:0
-				,border: "1px solid #000"
-				,width: 200
-				,height: 200});
-	    }
-	    $("#main").append($div);
-	});
-
-*/

@@ -1,7 +1,18 @@
+# finders
+get "/shop/by_owner" do
+  shop_find_by_owner(params[:owner])
+end
+
 # left navigation for anonymous
 get "/shop/ui/nav" do
   haml :my_shop_nav
 end
+
+# product-form
+get "/shop/ui/product_form" do
+  haml :product_form
+end
+
 
 # user's shop or my-shop component
 # if user has not a shop, show my-shop-create
@@ -10,7 +21,7 @@ get "/:user/shop" do
   #session["user"]["has_shop"]=nil
   if params[:user]==session["user"]["username"]
     if session["user"]["has_shop"]
-      shop= shop_get_by_owner(params[:user])
+      shop= shop_find_by_owner(params[:user])
       haml :my_shop, :locals => {:shop => shop}
     else
       haml :my_shop, :locals => {:shop => {}}
@@ -65,3 +76,4 @@ end
 get "/:user/shop/ui/nav" do
   haml :shop_nav if params[:user]==session["user"]["username"]
 end
+

@@ -112,4 +112,4 @@ $.widget("ui.ghost_dialog", {
     }
   });
 
-$.ui.ghost_dialog.defaults= $.extend({},{height:200,width:200,pos:0,after_render:function(){}});
+$.ui.ghost_dialog.defaults= $.extend({},{height:400,width:200,pos:0,after_render:function(){}});

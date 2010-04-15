@@ -54,8 +54,16 @@ $.widget("ui.my_shop", {
 		});
 	},
         _visit: function() {
+	    var $el= this.element;
+
 	    $(window).trigger("shop-visit");
 	    this._prepare_form();
+	    $("#add-first-product").click(function() {
+		    $.get("/shop/ui/product_form", function(html) {
+			    $el.append($(html));
+			    $el.find("#product-form").product_form();
+			});
+		});
 	},
         _logo_uploadify: function() {
 	    var $el= this.element;
@@ -87,7 +95,8 @@ $.widget("ui.my_shop", {
 		    'fileExt':'*.jpg;*.gif;*.png',
 		    'sizeLimit':10000000,
 		    'onSelect': onSelect,
-		    'onComplete': onComplete
+  		    'onComplete': onComplete,
+  		    'queueID': "shop-logo-fileQueue"
 			});
 	},
 	_prepare_form: function() {
@@ -123,5 +132,7 @@ $.widget("ui.my_shop", {
 			$(this).val("sitio web de tu tienda o negocio");
 		    }
 		});
+	},
+        _open_product_form: function() {
 	}
     });

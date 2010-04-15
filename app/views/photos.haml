@@ -1,0 +1,29 @@
+.photos-content
+  .photos
+    .top
+      .left-btn
+      .right-btn
+      .fullscrn
+    .gallery
+      .del-btn
+      .pic
+        .items
+          .img
+            %img{:src=>"/images/gatito.png", :width=>"166", :height=>"166"}
+  - if uploader
+    .uploader
+      .empty
+        %p 
+          no hay fotos
+          %br/
+          para subir
+      %input#uploadify.hidden{:type=>"file",:name=>"uploadify"}
+      #fileQueue &nbsp;
+      .social
+        .flickr
+        .picassa
+        .link
+- if uploader
+  .photos-control
+    .show
+    .new

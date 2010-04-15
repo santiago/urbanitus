@@ -42,11 +42,6 @@ module CouchDBHelpers
     end
   end
 
-  private
-  def couchdb_db_url(db)
-    "#{options.couchdb_server}/#{db.to_s}"
-  end
-  
   def couchdb_view_url(db,design,view,params={})
     url="#{options.couchdb_server}/#{db.to_s}/_design/#{design.to_s}/_view/#{view.to_s}"
     unless params.empty?
@@ -56,6 +51,11 @@ module CouchDBHelpers
       url << query
     end
     URI.escape(url)
+  end
+
+  private
+  def couchdb_db_url(db)
+    "#{options.couchdb_server}/#{db.to_s}"
   end
   
   def couchdb_doc_url(db,id)

@@ -14,7 +14,7 @@
         .logo 
           %p logo de tu tienda
       %input#shop-logo-uploadify{:type=>"file",:name=>"shop-logo-uploadify"}
-      #fileQueue &nbsp;
+      #shop-logo-fileQueue &nbsp;
     #my-shop-new-form
       %form{:method=>"POST", :action=>"/#{session["user"]["username"]}/shop"}
         %input.logo_image{:type=>"hidden", :name=>"logo", :value=>"#{logo}"}
@@ -39,7 +39,7 @@
   - unless has_catalog
     #no-catalog
       %p Tu cat&aacute;logo est&aacute; vac&iacute;o.
-      %a{:href=>"#"} Agrega tu primer producto
+      %a#add-first-product{:href=>"#"} Agrega tu primer producto
 
   - unless has_shop
     .privacy-terms

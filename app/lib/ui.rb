@@ -88,6 +88,17 @@ encontraras todo lo que necesitas para cualquier cosa y algo mas",
       [assets, {:components=> components}]
     end
 
+    def category_list
+      json={}
+      if @id
+        json=(RestClient.get couchdb_doc_url(:categories, @id)).body
+      else
+        json=(RestClient.get couchdb_view_url(:categories,:tree,:root)).body
+      end
+      list=JSON.parse json
+      [nil, {:category_list=>list["rows"], :id=>@id}]      
+    end
+
     private
     def jquery_ui_with_styles
       assets= Assets.new 
