@@ -216,6 +216,16 @@ $.widget("ui.product_form", {
     // post item
     this.$publish_btn.click(function(e) {
 	    $("#post-item-form").form("submit", function(responseText, statusText, xhr, $form) {
+		    $el.trigger("product-posted");
+		});
+	});
+    
+	} // _init
+    });
+
+
+
+/*
 		    var new_product_id= responseText; // autoid for just created product
 		    // reload product list after (successful?) post
 		    $el.find(".product-list").product_list("load", function() {
@@ -228,9 +238,4 @@ $.widget("ui.product_form", {
 					$product.find(".product-image img")
 					    .attr("src","http://assets.tengoantojo.com/images/products/santiago/"+files[0]+query_string());
 				    });
-			});
-		});
-	});
-    
-	} // _init
-    });
+				    });*/

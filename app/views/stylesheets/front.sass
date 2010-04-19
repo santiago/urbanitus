@@ -160,5 +160,36 @@
         :margin-left 20px
     button
       :margin-left 445px
-  #product-form
-    +pos(0px,0px)
+#product-form
+  +pos(0px,0px)
+
+#catalog
+  .top
+    .shop-logo-thumb,.shop-status,#catalog-pager,#add-product-btn
+      :float left
+    .shop-status
+      :font-size 16px
+  #catalog-showcase
+    :clear left
+    .catalog-product
+      :position relative
+      +box(220px,90px)
+      :float left
+      :border 1px dotted #AAA
+      &.first
+        :clear left
+      .product-photo,.product-basic
+        :float left
+      .product-photo
+        :margin 5px
+      .product-basic
+        :font-size 12px
+        .product-title
+          :width 130px
+        .product-price
+          :position absolute
+          :right 3px
+          :bottom 3px
+      .performance-icons
+        +box(120px,30px)
+        :border 1px solid #DDD

@@ -31,7 +31,11 @@ module Marketplace
       result
     end
 
-    def has_catalog?
+    def has_catalog?(shop)
+      shop_get_products(shop)
+    end
+
+    def shop_get_products(shop)
     end
   end
 
@@ -50,6 +54,10 @@ module Marketplace
   end
 
   module Product
+    def product_find_by_owner(owner)
+      r=query_view(:products,:getter,:by_owner,{"key"=>"\"#{owner}\""})
+    end
+
     def product_new(product)
       # =>
       # validations

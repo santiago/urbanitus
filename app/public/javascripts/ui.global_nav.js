@@ -19,6 +19,17 @@ $.widget("ui.marketplace_browser", {
 	}
     });
 
+$.widget("ui.my_shop_nav", {
+	_init: function() {
+	    var $el= this.element;
+	    $el.find("#my-shop-menu li").click(function() {
+		    var option= $(this).find("a").attr("href").replace(/#/,"");
+		    $(window).trigger(option+"-visit");
+		});
+	}
+    });
+
+
 $.widget("ui.global_nav", {
 	_init: function() {
 	    $("#marketplace-browser").marketplace_browser()
@@ -35,6 +46,7 @@ $.widget("ui.global_nav", {
 		    // load my-shop-nav
 		    $.get("/shop/ui/nav", function(html) {
 			    $("#marketplace-browser").after(html);
+			    $("#my-shop-nav").my_shop_nav();
 			});
 		});
 	}

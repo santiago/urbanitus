@@ -1,0 +1,16 @@
+#catalog
+  .top
+    .shop-logo-thumb
+      %img{:src=>"#{shop["logo"]}", :width=>50, :height=>50}
+    %p.shop-status #{shop["name"]}
+    #catalog-pager 1
+    %p#add-product-btn agregar producto +
+  #catalog-showcase
+    - products.each_index do |i|
+      .catalog-product{:class=>"#{(i.modulo 3)==0 ? "first":nil}"}
+        .product-photo
+          %img{:src=>"/images/gatito.png", :width=>80, :height=>80}
+        .product-basic
+          %p.product-title #{products[i]["value"]["title"]}
+          .performance-icons &nbsp;
+          %p.product-price $ #{products[i]["value"]["price"]}

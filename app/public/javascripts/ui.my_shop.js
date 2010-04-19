@@ -56,12 +56,16 @@ $.widget("ui.my_shop", {
         _visit: function() {
 	    var $el= this.element;
 
-	    $(window).trigger("shop-visit");
+	    //	    $(window).trigger("shop-visit");
 	    this._prepare_form();
 	    $("#add-first-product").click(function() {
 		    $.get("/shop/ui/product_form", function(html) {
 			    $el.append($(html));
 			    $el.find("#product-form").product_form();
+
+			    $el.find("#product-form").bind("product-posted", function() {
+				    $(window).trigger("my-catalog-visit");
+				});
 			});
 		});
 	},

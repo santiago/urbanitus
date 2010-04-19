@@ -13,7 +13,6 @@ get "/shop/ui/product_form" do
   haml :product_form
 end
 
-
 # user's shop or my-shop component
 # if user has not a shop, show my-shop-create
 # else show my-shop
@@ -77,3 +76,10 @@ get "/:user/shop/ui/nav" do
   haml :shop_nav if params[:user]==session["user"]["username"]
 end
 
+# shop's catalog
+get "/:user/shop/ui/catalog" do
+  shop= shop_find_by_owner(params[:user])
+  products= product_find_by_owner(params[:user])
+
+  haml :catalog, :locals=>{:shop=>shop,:products=>products}
+end
