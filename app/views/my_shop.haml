@@ -3,7 +3,7 @@
 - name= shop["name"]||"Nombre de tu tienda"
 - website= shop["website"]||"sitio web de tu tienda o negocio"
 - description= shop["description"]||"Descripci&oacute;n"
-- has_catalog= false
+- has_catalog= has_catalog?(session["user"]["username"])
 
 #my-shop{:class=>"#{"shop-new" unless has_shop}"}
   .wrap

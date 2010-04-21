@@ -2,9 +2,10 @@
   .top
     .shop-logo-thumb
       %img{:src=>"#{shop["logo"]}", :width=>50, :height=>50}
-    %p.shop-status #{shop["name"]}
-    #catalog-pager 1
-    %p#add-product-btn agregar producto +
+    .wrapper
+      %p.shop-status #{shop["name"]}
+      #catalog-pager <1>
+      %p#add-product-btn agregar producto +
   #catalog-showcase
     - products.each_index do |i|
       .catalog-product{:class=>"#{(i.modulo 3)==0 ? "first":nil}"}

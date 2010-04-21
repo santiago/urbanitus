@@ -54,6 +54,10 @@ module Marketplace
   end
 
   module Product
+    def has_catalog?(owner)
+      !product_find_by_owner(owner).empty?
+    end
+
     def product_find_by_owner(owner)
       r=query_view(:products,:getter,:by_owner,{"key"=>"\"#{owner}\""})
     end

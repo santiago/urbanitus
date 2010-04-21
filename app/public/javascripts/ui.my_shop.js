@@ -19,6 +19,10 @@ $.widget("ui.my_shop", {
 		this._open();
 	    else
 		this._visit();
+
+	    $("#add-product-btn").click(function() {
+		    
+		});
 	},
 	_open: function() {
 	    var $el= this.element;
